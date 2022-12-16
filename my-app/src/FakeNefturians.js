@@ -3,10 +3,10 @@ import Web3 from "web3";
 import Network from "./Network";
 
 const contractABI = require("./contracts/FakeNefturians.json").abi; 
-const contract_address = "0x1dA89342716B14602664626CD3482b47D5C2005E"; 
+const contractAddress = "0x1dA89342716B14602664626CD3482b47D5C2005E"; 
 
 let web3 = new Web3(window.ethereum);
-var contract = new web3.eth.Contract(contractABI, contract_address);
+var contract = new web3.eth.Contract(contractABI, contractAddress);
 
 
 
@@ -33,12 +33,13 @@ function FakeNefturians(){
         await contract.methods.buyAToken().send({from: accounts[0], value: price}).then(console.log); 
         }
     }
+    
     return(
         <div>
             
             <br></br>
             <div className="Info">{priceETH} ETH</div>
-            <button className ="Click" onClick={BuyToken}> Buy Token </button>
+            <button className ="Click" onClick={BuyToken}> Acheter Token </button>
             <div></div>
         </div>
     )

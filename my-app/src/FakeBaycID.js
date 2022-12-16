@@ -4,20 +4,16 @@ import Network from "./Network";
 
 function FakeBaycID() {
     
-    //Declaration des const pour stocker l'identifiant du jeton, les attributs et l'adresse IPFS de l'image associée
     const[tokenId, setTokenId] = useState(); 
     const[attribute, setAttribute]= useState(); 
     const [image, setImage] = useState(""); 
 
-    //Déclaration des variables pour l'ABI et l'adresse du contrat
     const contractABI = require("./contracts/FakeBAYC.json").abi; 
     const contract_address = "0x1dA89342716B14602664626CD3482b47D5C2005E"; 
-    
-    //Connection à Metamask et création d'une instance de contrat
+
     let web3 = new Web3(window.ethereum);
     var contract = new web3.eth.Contract(contractABI, contract_address);
 
-    //
     const handleChamp = (event)=>{
         setTokenId(event.target.value)
     }
@@ -27,7 +23,7 @@ function FakeBaycID() {
        
         let a = await Network(); 
        
-        if(a===true){ // good network
+        if(a===true){ 
            
             if(tokenId >= parseInt(await contract.methods.tokenCounter().call())){
               alert("Ce token n'est pas mint"); 
